@@ -47,7 +47,7 @@ html {
 body {
 	background: url("content/img/jp_03.svg") repeat,
 		linear-gradient(135deg, var(--azul-medio), var(--azul-escuro));
-	font-size: 125%;
+	font-size: 1rem;
 	height: 100%;
 }
 #home {
@@ -156,10 +156,11 @@ div.small {
 	color: var(--branco);
 }
 h1 {
-	font-size: 3.25rem;
+	font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+	line-height: 1.1;
 }
 h2 {
-	font-size: 1.125rem;
+	font-size: 1.5rem;
 	margin-bottom: 1.25rem;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -183,7 +184,7 @@ div p:last-of-type {
 
 /* container principal e padrões */
 main {
-	max-width: var(--main-max-width);
+	max-width: var(--max-width);
 	margin: 0 auto;
 }
 main > section {
@@ -195,42 +196,43 @@ main > section img {
 }
 
 /* seção conhecimentos */
+#conhecimentos h3 {
+	color: var(--rosa);
+	font-size: 1.25rem;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	text-transform: capitalize;
+	font-style: normal;
+}
 #conhecimentos div.row p {
-	display: grid;
-	grid-template-columns: 1.5rem calc(100% - 1.5rem);
-	justify-content: start;
+	display: flex;
 	align-items: center;
-	column-gap: 0.5rem;
+	gap: 0.75rem;
 	background: hsl(0, 0%, 100%, 10%);
 	border-radius: 0.5rem;
-	padding: 0.5rem;
+	padding: 0.75rem 1rem;
 	backdrop-filter: blur(2px);
+	margin-bottom: 0;
+	transition: background 200ms ease;
+}
+#conhecimentos div.row p:hover {
+	background: hsl(0, 0%, 100%, 15%);
 }
 #conhecimentos div.row .icon {
 	font-size: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 1.5rem;
-	margin-right: 1rem;
-	aspect-ratio: 1/1;
-}
-#conhecimentos div:has(img) img {
-	width: 100%;
-	max-width: 96px;
-	border: none;
-	box-shadow: none;
-}
-.logo_p_fix {
-	padding: 8px;
 }
 
 /* seção de projetos */
 #projetos article {
-	margin-bottom: 2.5rem;
-	cursor: pointer;
+	margin-bottom: 0rem;
 }
 #projetos h3 {
 	color: var(--branco);
-	text-decoration: underline;
-	text-underline-offset: 0.5rem;
+	text-decoration: none;
 	transition: 100ms ease-in-out;
 }
 #projetos article:hover h3 {
@@ -240,54 +242,49 @@ main > section img {
 	width: 100%;
 }
 #projetos article {
-	display: grid;
-	grid-template-rows: auto auto;
-	grid-template-columns: 100%;
+	display: flex;
+	flex-direction: column;
 	width: 100%;
-	row-gap: 1rem;
-
 	background: hsla(200, 80%, 60%, 0.04);
 	backdrop-filter: blur(2px);
 	border-radius: 0.5rem;
-	padding: 1rem;
+	padding: 1.5rem;
+	border: 1px solid hsla(0, 0%, 100%, 0.05);
+	transition: border-color 200ms ease, box-shadow 200ms ease;
 }
-#projetos article div:has(p) {
-	grid-row: 1;
+#projetos article:hover {
+	border-color: var(--rosa);
+	box-shadow: 0 4px 20px rgba(255, 0, 255, 0.1);
 }
-#projetos article div:has(img) {
-	grid-row: 2;
+#projetos article p {
+	padding: 0;
+	margin-top: 0.5rem;
 }
 #projetos article div.small {
 	text-align: center;
 	text-transform: lowercase;
 	font-variant: small-caps;
 	font-weight: 100;
+	opacity: 0.7;
+	border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+	padding-top: 0.75rem;
 }
 
 /*
     classes de transições
 */
-/* seleciona .efeito porém não quando tem .direita junto */
-main .efeito:not(:has(.direita)) {
-	position: relative;
-	left: -50%;
+/* transicoes melhoradas */
+main .efeito {
 	opacity: 0;
-	transition: all 500ms ease-in-out;
+	transform: translateY(30px);
+	transition: opacity 600ms ease-out, transform 600ms ease-out;
 }
-main .efeito:nth-of-type(2),
-main .efeito:nth-of-type(4),
-main .efeito:nth-of-type(6) {
-	position: relative;
-	left: 50%;
-	opacity: 0;
-	transition: all 500ms ease-in-out;
+main .efeito.direita {
+	transform: translateY(30px);
 }
 .aparecer {
-	position: relative;
 	opacity: 1 !important;
-	left: 0% !important;
-	right: 0%;
-	transition: all 500ms ease-in-out;
+	transform: translateY(0) !important;
 }
 
 #container_h1.efeito::before,
@@ -308,43 +305,6 @@ main .efeito:nth-of-type(6) {
 }
 
 /* mediaqueries */
-/* mediaqueries para adequar o tamanho do h1 */
-@media (max-width: 406px) {
-	h1 {
-		font-size: 2.75rem;
-	}
-}
-@media (min-width: 407px) {
-	h1 {
-		height: max-content;
-		font-size: 3.25rem;
-	}
-}
-@media (min-width: 515px) {
-	h1 {
-		font-size: 4.3rem;
-	}
-}
-@media (min-width: 664px) {
-	h1 {
-		font-size: 5.5rem;
-	}
-}
-@media (min-width: 827px) {
-	h1 {
-		font-size: 6rem;
-	}
-}
-@media (min-width: 898px) {
-	h1 {
-		font-size: 6.5rem;
-	}
-}
-@media (min-width: 964px) {
-	h1 {
-		font-size: 7rem;
-	}
-}
 /* mediaquerie para aparelhos abaixo de md */
 @media (max-width: 767.98px) {
 	@supports (backdrop-filter: blur()) {
@@ -368,7 +328,7 @@ main .efeito:nth-of-type(6) {
 		}
 	}
 	body {
-		font-size: 150%;
+		font-size: 1.125rem;
 	}
 }
 /* mediaquerie para lg */
@@ -381,24 +341,10 @@ main .efeito:nth-of-type(6) {
 
 /* mediaquerie para xl */
 @media (min-width: 1200px) {
-	h1 {
-		font-size: 7rem;
-		height: 230.4px;
-		height: 100%;
-	}
-	#projetos article {
-		max-width: 322px;
-	}
 }
 
 @media (max-width: 1350px) {
 	body > * {
-		overflow: hidden !important;
-	}
-	#projetos .efeito {
-		left: -25%;
-	}
-	#projetos .efeito.direita {
-		left: 25%;
+		overflow-x: hidden !important;
 	}
 }

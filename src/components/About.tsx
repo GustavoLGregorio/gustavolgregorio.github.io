@@ -1,11 +1,13 @@
 import TechCarousel from "./TechCarousel";
 import SectionTitle from "./SectionTitle";
 import profile_pic from "./../assets/images/profile_pic.png";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+    const { t } = useTranslation();
     return (
         <section id="about" className="flex flex-col">
-            <SectionTitle title="sobre mim" />
+            <SectionTitle title={t("about.title")} />
 
             <div className="flex flex-col gap-8">
                 <img
@@ -13,10 +15,12 @@ export default function About() {
                     alt="Foto de Gustavo Luiz Gregorio"
                     className="aspect-square w-1/2 self-center rounded-xl object-cover object-center sm:w-1/3 md:w-1/4"
                 />
-                <p className="cs-font-fragment-mono">
-                    Meu nome é Gustavo, tenho 21 anos e sou graduando em Técnologia em Analise e Desenvolvimento de
-                    Sistemas (TADS) no Instituto Federal do Paraná (IFPR). Gosto de programar jogos e ferramentas.
-                </p>
+                <div className="cs-font-fragment-mono flex flex-col gap-4 text-base sm:text-lg">
+                    <p>{t("about.text1")}</p>
+                    <p>{t("about.text2")}</p>
+                    <p>{t("about.text3")}</p>
+                    <p>{t("about.text4")}</p>
+                </div>
                 <TechCarousel />
             </div>
         </section>

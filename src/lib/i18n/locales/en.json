@@ -1,0 +1,31 @@
+{
+  "header": {
+    "about": "about",
+    "resume": "resume",
+    "projects": "projects"
+  },
+  "hero": {
+    "title": "Fullstack Developer | Web Tooling"
+  },
+  "projects": {
+    "title": "projects",
+    "status": {
+      "production": "In Production",
+      "development": "In Development",
+      "closed_source": "Closed Source",
+      "npm_package": "NPM Package"
+    },
+    "view_more": "View details",
+    "close": "Close"
+  },
+  "about": {
+    "title": "about me",
+    "text1": "My name is Gustavo Luiz Gregorio, I am 21 years old and currently studying Systems Analysis and Development at IFPR. My true passion in technology is not just using tools, but deeply understanding how they work under the hood and building my own solutions.",
+    "text2": "I have a deep focus on the JavaScript and TypeScript ecosystem. A great example of my genuine interest in software architecture is BrioJS — I didn't create this 2D game engine to reinvent the wheel, but to practically study the challenges of the Event Loop, OOP, Dependency Injection, complex Design Patterns, and DOM APIs.",
+    "text3": "I am also an explorer and aspiring researcher in Artificial Intelligence. Currently, I build meta-programming and agentic orchestration tools (like my agent-slot project) that power AI pipelines both in my side projects and my professional daily routine, always focusing on result-oriented 'vibecoding'.",
+    "text4": "Today I work as a Fullstack developer at BNE (Banco Nacional de Empregos), predominantly using the React, Next.js, Node, and Vite ecosystems, but also diving into C#, .NET, and relational databases when needed. I build software because I love the creative process, and I would continue building even for free, for the pure joy of technological discovery."
+  },
+  "footer": {
+    "copyright": "Copyright © Gustavo Luiz Gregorio {{year}}"
+  }
+}

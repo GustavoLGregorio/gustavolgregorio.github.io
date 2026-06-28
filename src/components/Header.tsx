@@ -4,9 +4,11 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { backgroundBus } from "../lib/backgroundBus";
+import { useTranslation } from "react-i18next";
 // import NavBackground from "./NavBackground";
 
 export default function Header() {
+    const { t, i18n } = useTranslation();
     const [isToggled, setIsToggled] = useState<boolean>(true);
     const [navbarToggler, setNavbarToggler] = useState<IconDefinition>(faBars);
     const navRef = useRef(null);
@@ -44,6 +46,11 @@ export default function Header() {
         else setIsToggled(true);
     };
 
+    const toggleLanguage = () => {
+        const newLang = i18n.language === "pt" ? "en" : "pt";
+        i18n.changeLanguage(newLang);
+    };
+
     const handleCurriculumClick = () => {
         window.open(location.href + "cv.pdf", "_blank");
     };
@@ -61,12 +68,12 @@ export default function Header() {
                     <div className="p-4">
                         <li className="capitalize">
                             <a onClick={handleOnClickPageScroll} className="cursor-pointer">
-                                Sobre
+                                {t("header.about")}
                             </a>
                         </li>
                         <li className="capitalize">
                             <a onClick={handleCurriculumClick} className="cursor-pointer">
-                                Currículo
+                                {t("header.resume")}
                             </a>
                         </li>
                     </div>
@@ -81,6 +88,11 @@ export default function Header() {
                                 <FontAwesomeIcon icon={faGithub} size="2x" />
                             </a>
                         </li>
+                        <li>
+                            <button onClick={toggleLanguage} className="flex h-full items-center font-bold cs-link px-2">
+                                {i18n.language.toUpperCase()}
+                            </button>
+                        </li>
                     </div>
                     {/* <NavBackground /> */}
                 </ul>
@@ -94,12 +106,12 @@ export default function Header() {
                 <ul ref={navRef} className="bg-background flex w-full items-center gap-4">
                     <li className="capitalize">
                         <a onClick={handleOnClickPageScroll} className="cursor-pointer">
-                            Sobre
+                            {t("header.about")}
                         </a>
                     </li>
                     <li className="capitalize">
                         <button onClick={handleCurriculumClick} className="cs-link cursor-pointer">
-                            Currículo
+                            {t("header.resume")}
                         </button>
                     </li>
                     <li>
@@ -112,18 +124,25 @@ export default function Header() {
                             <FontAwesomeIcon icon={faGithub} size="2x" />
                         </a>
                     </li>
+                    <li>
+                        <button onClick={toggleLanguage} className="flex h-full items-center font-bold cs-link px-2 border-l border-foreground/30 pl-4 ml-2">
+                            {i18n.language.toUpperCase()}
+                        </button>
+                    </li>
                 </ul>
             </nav>
         );
     };
 
     return (
-        <header className="bg-background cs-font-lalezar fixed z-50 flex w-full items-center justify-between px-6 py-6 text-lg sm:text-xl">
-            <a href="#" className="text-xl">
-                Gustavo L. Gregorio
-            </a>
+        <header className="bg-background cs-font-lalezar fixed z-50 flex w-full justify-center px-6 py-4 text-lg sm:text-xl border-b border-foreground/10">
+            <div className="w-full max-w-6xl flex items-center justify-between">
+                <a href="#" className="text-xl">
+                    Gustavo L. Gregorio
+                </a>
 
-            {windowSize[0] >= 640 ? <RowNav /> : <TogglableNav />}
+                {windowSize[0] >= 640 ? <RowNav /> : <TogglableNav />}
+            </div>
         </header>
     );
 }

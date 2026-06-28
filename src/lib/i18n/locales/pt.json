@@ -1,0 +1,31 @@
+{
+  "header": {
+    "about": "sobre",
+    "resume": "currículo",
+    "projects": "projetos"
+  },
+  "hero": {
+    "title": "Desenvolvedor Fullstack | Web Tooling"
+  },
+  "projects": {
+    "title": "projetos",
+    "status": {
+      "production": "Em Produção",
+      "development": "Em Desenvolvimento",
+      "closed_source": "Closed Source",
+      "npm_package": "Biblioteca NPM"
+    },
+    "view_more": "Ver mais",
+    "close": "Fechar"
+  },
+  "about": {
+    "title": "sobre mim",
+    "text1": "Meu nome é Gustavo Luiz Gregorio, tenho 21 anos e sou estudante de Análise e Desenvolvimento de Sistemas (TADS) no IFPR. Minha verdadeira paixão na tecnologia não está apenas em consumir ferramentas, mas em entender como elas funcionam por baixo dos panos e criar minhas próprias soluções.",
+    "text2": "Tenho um foco profundo no ecossistema JavaScript e TypeScript. Um grande exemplo do meu interesse genuíno por arquitetura de software é o BrioJS — não criei essa engine de jogos 2D para reinventar a roda, mas sim para estudar na prática os desafios do Event Loop, OOP, Injeção de Dependências, Patterns Complexos e APIs do DOM.",
+    "text3": "Também sou aspirante e explorador na área de Inteligência Artificial. Atualmente construo ferramentas de meta-programação e orquestração agêntica (como o meu projeto agent-slot) que alimentam pipelines de IA tanto nos meus projetos paralelos quanto no meu dia a dia profissional, focando sempre em 'vibecoding' orientado a resultados palpáveis.",
+    "text4": "Hoje trabalho como desenvolvedor Fullstack no BNE (Banco Nacional de Empregos), utilizando predominantemente o ecossistema React, Next.js, Node e Vite, mas também mergulhando em C#, .NET e bancos relacionais quando necessário. Faço software porque amo o processo criativo, e continuaria construindo, mesmo que de graça, pelo puro prazer da descoberta tecnológica."
+  },
+  "footer": {
+    "copyright": "Copyright © Gustavo Luiz Gregorio {{year}}"
+  }
+}

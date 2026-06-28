@@ -29,8 +29,13 @@
 		<link rel="stylesheet" href="index.css" />
 		<script src="script.js" defer></script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<!-- custom libraries -->
+		<script src="https://unpkg.com/entropy-particles@2.1.2/dist/entropy-particles.js" defer></script>
+		<script src="https://unpkg.com/auto-theme-js@1.1.0/dist/auto-theme.js" defer></script>
+		<script src="https://unpkg.com/die-statement@1.0.3/dist/die.js" defer></script>
 	</head>
 	<body class="text-light">
+		<canvas id="entropy-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -10; pointer-events: none; opacity: 0.3;"></canvas>
 		<div id="home" class="d-flex align-items-center">
 			<header class="d-flex align-items-center justify-content-center mb-md-5">
 				<div class="fixed-top d-flex align-content-center justify-content-center">
@@ -63,6 +68,9 @@
 							<li class="nav-item">
 								<a class="nav-link" href="#projetos">projetos</a>
 							</li>
+							<li class="nav-item ms-md-3 mt-2 mt-md-0 d-flex align-items-center">
+								<button id="btn_toggle_theme" class="btn btn-sm" style="background: var(--rosa); color: white; border: none;">Toggle Theme</button>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -88,126 +96,153 @@
 				<h2>Sobre</h2>
 				<div>
 					<p>
-						Meu nome é Gustavo, tenho 20 anos e sou graduando em Técnologia em Analise e
-						Desenvolvimento de Sistemas no Instituto Federal do Paraná (IFPR).
+						Meu nome é Gustavo, um desenvolvedor movido por uma curiosidade inesgotável sobre como as coisas funcionam por baixo dos panos. Sou graduando em Análise e Desenvolvimento de Sistemas pelo IFPR e atualmente estagiário no BNE.
 					</p>
 					<p>
-						Tenho como objetivo aprender e crescer na área de informática, já tendo conhecimentos e
-						experiência com hardware, agora busco me aprofundar profissionalmente em Software.
+						Acredito que o verdadeiro domínio vem de construir as coisas do zero. Minha paixão por arquitetura de software me levou a construir projetos como o <b>brio-js</b> manualmente, explorando conceitos profundos de OOP, Injeção de Dependências e Máquinas de Estado, sem depender de "mágica".
+					</p>
+					<p>
+						Ao mesmo tempo, possuo um forte foco em IA pragmática. Em vez de apenas usar APIs, construo pipelines complexas (como o <b>NexusMediaHub</b>), buscando integrar a inteligência artificial de forma nativa e poderosa nos fluxos de trabalho do dia a dia.
 					</p>
 				</div>
 			</section>
 
 			<section class="efeito direita" id="conhecimentos">
-				<h2>Conhecimentos</h2>
+				<h2>Conhecimentos & Stack</h2>
 				<div>
 					<p>
-						Além das ferramentas abaixo, tenho prática com design responsivo, uso de APIs,
-						desenvolvimento assíncrono e Orientação a Objetos
+						Mais do que apenas sintaxe, foco em entender os paradigmas, arquitetura e as engines por trás de cada tecnologia.
 					</p>
 				</div>
-				<div class="d-grid mt-3 mx-3">
-					<div class="row">
-						<div class="col-6">
-							<p><i class="icon fa-brands fa-html5" style="color: #e34f26"></i>html</p>
-							<p><i class="icon fa-brands fa-css3-alt" style="color: #1572b6"></i>css</p>
-							<p><i class="icon fa-brands fa-js" style="color: #f7df1e"></i>javascript</p>
-							<p>
-								<img
-									class="icon"
-									src="/content/logos/tailwind.svg"
-									style="color: #38bdf8"
-								/>tailwind
-							</p>
-							<p><i class="icon fa-brands fa-bootstrap" style="color: #7952b3"></i>bootstrap</p>
+				<div class="d-flex flex-column gap-4 mt-4 mx-3">
+					<div>
+						<h3>Core & Fundamentos</h3>
+						<div class="row g-2">
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-brands fa-js" style="color: #f7df1e"></i>JavaScript/TypeScript</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-bolt" style="color: #e34f26"></i>Async / Event Loop</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-code" style="color: #1572b6"></i>Metaprogramming</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-cubes" style="color: #7952b3"></i>OOP & DI</p>
+							</div>
 						</div>
-						<div class="col-6">
-							<p><i class="icon fa-brands fa-react" style="color: #61dbfb"></i>react</p>
-							<p><i class="icon fa-brands fa-php" style="color: #777bb4"></i>php</p>
-							<p><i class="icon fa-solid fa-database" style="color: #4479a1"></i>mysql</p>
-							<p>
-								<img class="icon" src="/content/logos/mongodb.svg" style="color: #38bdf8" />mongodb
-							</p>
+					</div>
+
+					<div>
+						<h3>AI & Vibecoding Tools</h3>
+						<div class="row g-2">
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-brands fa-python" style="color: #38bdf8"></i>Python</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-brands fa-rust" style="color: #dea584"></i>Rust</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-bread-slice" style="color: #fbf0df"></i>Bun</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-network-wired" style="color: #4479a1"></i>Agentic Architectures</p>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h3>Work & Product Stack (BNE)</h3>
+						<div class="row g-2">
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-brands fa-react" style="color: #61dbfb"></i>React / Next.js</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-code" style="color: #9b4993"></i>C# (.NET)</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-database" style="color: #336791"></i>PostgreSQL</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-solid fa-gears" style="color: #ff6a00"></i>n8n / Automations</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p><i class="icon fa-brands fa-figma" style="color: #f24e1e"></i>Figma</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<section class="efeito" id="projetos">
-				<h2>Projetos</h2>
+				<h2>Projetos & Construções</h2>
 				<div class="container px-0">
-					<div class="row gap-3 row-gap-0 mx-0 px-0">
-						<!-- projeto japao -->
-						<article class="col-12 col-lg-4 efeito" id="projeto_japao">
-							<div>
-								<h3 class="cursor-pointer">Projeto Japão</h3>
+					<div class="row gap-4 row-gap-4 mx-0 px-0 justify-content-center">
+						<!-- Glyphia -->
+						<article class="col-12 col-lg-5 efeito" id="projeto_glyphia">
+							<div class="d-flex flex-column h-100">
+								<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+									<h3 class="cursor-pointer mb-0">Glyphia</h3>
+									<span class="badge bg-success">Prod / WIP</span>
+								</div>
 								<p>
-									Projeto que fiz para uma dispensa por competência na matéria de "Desenvolvimento
-									Web 1" da faculdade. Utiliza design moderno e React
+									Plataforma completa em produção, atualmente em melhoria continua. Envolve arquiteturas modernas e um foco na entrega rápida e escalável.
 								</p>
-							</div>
-							<div>
-								<img
-									src="content/img/projetos/projeto_japao.png"
-									alt="Foto da home da página Projeto Japão"
-								/>
-								<div class="small">react &middot; tailwind &middot; vite</div>
-							</div>
-						</article>
-
-						<!-- lixadora gregorio -->
-						<!-- <article class="col-12 col-lg-4 efeito" id="lixadora_gregorio">
-							<div>
-								<h3>Lixadora Gregorio</h3>
-								<p>
-									Site que fiz para a micro-empresa de lixamentos que meu tio possui. Demonstra uso
-									de técnicas de SEO junto a um design moderno
-								</p>
-							</div>
-							<div>
-								<img
-									src="content/img/projeto_lixadora_gregorio.png"
-									alt="Foto da home do site Lixadora Gregorio"
-								/>
-								<div class="small">
-									html &middot; css &middot; javascript &middot; bootstrap &middot; php
+								<div class="mt-auto">
+									<div class="small mt-3">next.js &middot; react &middot; tailwind</div>
 								</div>
 							</div>
-						</article> -->
+						</article>
 
-						<!-- snake-game -->
-						<article class="col-12 col-lg-4 efeito direita" id="snake_game">
-							<div>
-								<h3>Snake-game</h3>
+						<!-- Brio-js -->
+						<article class="col-12 col-lg-5 efeito direita" id="projeto_brio_js">
+							<div class="d-flex flex-column h-100">
+								<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+									<h3 class="cursor-pointer mb-0">brio-js</h3>
+									<span class="badge bg-primary">WIP / Open Source</span>
+								</div>
 								<p>
-									Um jogo da cobrinha simples construído com javascript puro, com manipulação de
-									atributos customizados e DOM nodes
+									Meu projeto de paixão. Uma engine ou micro-framework construída puramente à mão para explorar e entender a fundo OOP, Injeção de Dependências e State Machines sem depender de frameworks externos.
 								</p>
-							</div>
-							<div>
-								<img
-									src="content/img/projetos/snake_game.png"
-									alt="Foto da home da pagina Snake Game"
-								/>
-								<div class="small">html &middot; css &middot; javascript &middot;</div>
+								<div class="mt-auto">
+									<div class="small mt-3">typescript &middot; architecture &middot; di</div>
+								</div>
 							</div>
 						</article>
 
-						<!-- hangman-game -->
-						<article class="col-12 col-lg-4 efeito" id="hangman_game">
-							<div>
-								<h3>Hangman-game</h3>
+						<!-- NexusMediaHub -->
+						<article class="col-12 col-lg-5 efeito" id="projeto_nexus_media_hub">
+							<div class="d-flex flex-column h-100">
+								<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+									<h3 class="cursor-pointer mb-0">NexusMediaHub</h3>
+									<span class="badge bg-warning text-dark">WIP / Closed Source</span>
+								</div>
 								<p>
-									Um jogo da forca simples construído com javascript puro, com sistema de
-									localstorage para saves e pontuações persistentes
+									Pipeline baseada em Inteligência Artificial para produção de mídia de alto volume. Utiliza agentes IA nativos, integração massiva de dados e arquitetura complexa de automação.
 								</p>
+								<div class="mt-auto">
+									<div class="small mt-3">python &middot; rust &middot; n8n &middot; ai agents</div>
+								</div>
 							</div>
-							<div>
-								<img
-									src="content/img/projetos/projeto_jogo_da_forca.png"
-									alt="Foto da home da página Jogo Da Forca"
-								/>
-								<div class="small">html &middot; css &middot; javascript</div>
+						</article>
+
+						<!-- NPM Libraries -->
+						<article class="col-12 col-lg-5 efeito direita" id="projeto_npm_libs">
+							<div class="d-flex flex-column h-100">
+								<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+									<h3 class="cursor-pointer mb-0">NPM Libraries</h3>
+									<span class="badge bg-info text-dark">Open Source</span>
+								</div>
+								<p>
+									Bibliotecas lançadas no NPMJS para resolver problemas específicos com elegância: <br/>
+									<strong>die-statement</strong>, <strong>auto-theme-js</strong>, e <strong>entropy-particles</strong>.
+								</p>
+								<div class="mt-3 px-3">
+									<button id="btn_die_easteregg" class="btn btn-sm btn-outline-danger w-100" style="backdrop-filter: blur(2px);">Testar die-statement()</button>
+								</div>
+								<div class="mt-auto">
+									<div class="small mt-3">npm &middot; javascript &middot; library</div>
+								</div>
 							</div>
 						</article>
 					</div>

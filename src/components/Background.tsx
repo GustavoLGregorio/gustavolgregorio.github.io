@@ -34,9 +34,13 @@ export default function Background() {
         };
         particles.start();
 
+        // Export particles instance to window for interaction from other components
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__particlesInstance = particles;
+
         backgroundBus.on("pause", () => particles.pause());
         backgroundBus.on("start", () => particles.start());
     }, []);
 
-    return <div ref={divRef} className="fixed z-[-10] h-dvh w-dvw"></div>;
+    return <div ref={divRef} className="fixed z-[-10] h-dvh w-dvw pointer-events-none"></div>;
 }

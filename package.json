@@ -15,11 +15,19 @@
         "@fortawesome/free-brands-svg-icons": "^7.1.0",
         "@fortawesome/free-solid-svg-icons": "^7.1.0",
         "@fortawesome/react-fontawesome": "^3.1.0",
+        "auto-theme-js": "^1.1.0",
+        "clsx": "^2.1.1",
+        "die-statement": "^1.0.3",
         "entropy-particles": "^2.1.2",
+        "framer-motion": "^12.42.0",
         "gh-pages": "^6.3.0",
+        "i18next": "^26.3.3",
+        "lucide-react": "^1.22.0",
         "mitt": "^3.0.1",
         "react": "^19.2.0",
-        "react-dom": "^19.2.0"
+        "react-dom": "^19.2.0",
+        "react-i18next": "^17.0.8",
+        "tailwind-merge": "^3.6.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.37.0",
